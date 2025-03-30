@@ -12,7 +12,7 @@ function fetchProductsThen() {
     }) 
     .then (function(products) {
         // looping the products and logging the names
-    products.forEach(function(product ){
+        products.forEach(function(product) {
         console.log ("Product name:", product.name);
     });
     })
@@ -25,7 +25,7 @@ function fetchProductsThen() {
 
 // Task 3: Fetch Products with async/await 
 // this is the same as before but now it's usifn async
-async function fetchProductAsync() {
+async function fetchProductsAsync() {
     // APU url for the products 
  const url = "https://www.course-api.com/javascript-store-products";
 
@@ -66,11 +66,11 @@ function displayProducts(products) {
   
       // create the  price of the product 
       const price = document.createElement("p");
-      price.textContent = "$" + product.price;
+      price.textContent = "$" + (product.price / 100).toFixed(2); // converts from it displaying  cents to dollars and  shows 2 decimal places
   
       // create product image; this will pull from the data that was in the API 
       const image = document.createElement("img");
-      image.src = product.image;
+      image.src = product.image.url ;
       image.alt = product.name;
       image.width = 200;
   
@@ -86,13 +86,12 @@ function displayProducts(products) {
   
   // task 5 : Reusable Error Handler 
    // this will log the error in case anything goes wrong in  fetch 
-   function hangleError(error) {
+   function handleError(error) {
     console.log("Warning: An Error had occured:", error.message);
 
    }
 
 // Task 6 : Calling My Fetch functions 
 fetchProductsThen();// logs the name in the console 
-fetchProductAsync();// diplays products on the page 
+fetchProductsAsync() ;// diplays products on the page 
 // this  will  test both versions  to ensure they work 
-
