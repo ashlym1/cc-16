@@ -13,7 +13,7 @@ function fetchProductsThen() {
     .then (function(products) {
         // looping the products and logging the names
         products.forEach(function(product) {
-        console.log ("Product name:", product.name);
+        console.log ("Product name:", product.fields.name);
     });
     })
 
@@ -26,7 +26,7 @@ function fetchProductsThen() {
 // Task 3: Fetch Products with async/await 
 // this is the same as before but now it's usifn async
 async function fetchProductsAsync() {
-    // APU url for the products 
+// APU url for the products 
  const url = "https://www.course-api.com/javascript-store-products";
 
  try{
@@ -45,21 +45,15 @@ async function fetchProductsAsync() {
  }
 
 // Task 4: Display products in the page (only show first 5)
-function displayProducts(products) {
-    // this finds  the product container from the html 
-    const container = document.getElementById("product-container");
-  
-    // Clearing  anything already inside: in case this gets called again
+    function displayProducts(products) {
+    const container = document.getElementById("product-container"); // this finds  the product container from the html 
     container.innerHTML = "";
-  
     // looping  through the first 5 products
-    for (let i = 0; i < 5; i++) {
-      const product = products[i];
-  
-      // create a div, which should  hold the product information
-      const productDiv = document.createElement("div");
+    for (let i = 0; i < 5; i++) { 
+      const item = products[i]; // pulling the 1st item 
+      const product =item.fields;// should be pulling the  data from  .fields 
+      const productDiv = document.createElement("div"); // create a div, which should  hold the product information 
       productDiv.classList.add("product-item"); // ** note to self: comeback to syle this  
-  
       // created a  product name
       const name = document.createElement("h2");
       name.textContent = product.name;
@@ -70,7 +64,7 @@ function displayProducts(products) {
   
       // create product image; this will pull from the data that was in the API 
       const image = document.createElement("img");
-      image.src = product.image.url ;
+      image.src = product.image[0].url; //grabs the image from the array 
       image.alt = product.name;
       image.width = 200;
   
@@ -93,5 +87,7 @@ function displayProducts(products) {
 
 // Task 6 : Calling My Fetch functions 
 fetchProductsThen();// logs the name in the console 
-fetchProductsAsync() ;// diplays products on the page 
+fetchProductsAsync();// diplays products on the page 
 // this  will  test both versions  to ensure they work 
+
+
