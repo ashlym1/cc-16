@@ -44,4 +44,43 @@ async function fetchProductAsync() {
  }
  }
 
-
+// Task 4: Display products in the page (only show first 5)
+function displayProducts(products) {
+    // this finds  the product container from the html 
+    const container = document.getElementById("product-container");
+  
+    // Clearing  anything already inside: in case this gets called again
+    container.innerHTML = "";
+  
+    // looping  through the first 5 products
+    for (let i = 0; i < 5; i++) {
+      const product = products[i];
+  
+      // create a div, which should  hold the product information
+      const productDiv = document.createElement("div");
+      productDiv.classList.add("product-item"); // ** note to self: comeback to syle this  
+  
+      // created a  product name
+      const name = document.createElement("h2");
+      name.textContent = product.name;
+  
+      // create the  price of the product 
+      const price = document.createElement("p");
+      price.textContent = "$" + product.price;
+  
+      // create product image; this will pull from the data that was in the API 
+      const image = document.createElement("img");
+      image.src = product.image;
+      image.alt = product.name;
+      image.width = 200;
+  
+      // add everything to the productDiv
+      productDiv.appendChild(name);
+      productDiv.appendChild(price);
+      productDiv.appendChild(image);
+  
+      // last step;  added  the productDiv to the container
+      container.appendChild(productDiv);
+    }
+  }
+  
