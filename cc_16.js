@@ -84,3 +84,10 @@ function displayProducts(products) {
     }
   }
   
+  // task 5 : Reusable Error Handler 
+   // this will log the error in case anything goes wrong  while fetching 
+   function hangleError(error) {
+    console.log("Warning: An Error had occured:", error.message);
+    
+   }
+
