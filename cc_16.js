@@ -85,9 +85,14 @@ function displayProducts(products) {
   }
   
   // task 5 : Reusable Error Handler 
-   // this will log the error in case anything goes wrong  while fetching 
+   // this will log the error in case anything goes wrong in  fetch 
    function hangleError(error) {
     console.log("Warning: An Error had occured:", error.message);
-    
+
    }
+
+// Task 6 : Calling My Fetch functions 
+fetchProductsThen();// logs the name in the console 
+fetchProductAsync();// diplays products on the page 
+// this  will  test both versions  to ensure they work 
 
